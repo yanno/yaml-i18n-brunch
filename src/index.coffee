@@ -104,6 +104,7 @@ module.exports = class Compiler
 
   # copy src yaml file to dest, as json
   dump: (path, data, callback) ->
+    path = path.replace('\\', '/') #to make it work on windows
     dict = yaml.safeLoad(data) or {}
     if @cfg.flatten is on
       dict = flatten(dict)
